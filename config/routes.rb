@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  mount Airlines::Engine, at: "/airlines"
+  mount Destinations::Engine, at: "/destinations"
+  mount Routes::Engine, at: "/routes"
 end

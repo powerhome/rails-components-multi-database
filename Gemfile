@@ -3,6 +3,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.0'
 
+path "components" do
+  gem 'airlines'
+  gem 'destinations'
+  gem 'routes'
+end
+
 gem 'rails', github: "rails/rails"
 
 # Use mysql as the database for Active Record

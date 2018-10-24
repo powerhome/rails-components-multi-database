@@ -9,6 +9,16 @@
 # And be sure to use new-style password hashing:
 #   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
 #
+
+<%
+  db_name_file = File.join(Rails.root, "db/name")
+  db_name = if File.exists?(db_name_file)
+    File.read(db_name_file).chomp
+  else
+    "umbrella"
+  end
+%>
+
 default: &default
   adapter: mysql2
   encoding: utf8
@@ -19,14 +29,14 @@ default: &default
 
 development:
   <<: *default
-  database: rails_components_multi_database_development
+  database: <%= db_name %>_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: rails_components_multi_database_test
+  database: <%= db_name %>_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -49,6 +59,4 @@ test:
 #
 production:
   <<: *default
-  database: rails_components_multi_database_production
-  username: rails_components_multi_database
-  password: <%= ENV['RAILS_COMPONENTS_MULTI_DATABASE_DATABASE_PASSWORD'] %>
+  database: <%= db_name %>_production
