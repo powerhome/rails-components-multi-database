@@ -5,3 +5,29 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Airlines::Airline.create!(
+  [
+    {
+      name: "Gol",
+      country: "Brasil",
+    },
+    {
+      name: "Delta",
+      country: "USA",
+    },
+  ]
+)
+
+Destinations::Destination.create!(
+  [
+    {
+      name: "Atlanta",
+      country: "USA",
+    },
+    {
+      name: "Rio de Janeiro",
+      country: "Brasil",
+    },
+  ]
+)
