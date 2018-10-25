@@ -28,8 +28,12 @@ default: &default
   host: 127.0.0.1
 
 development:
-  <<: *default
-  database: <%= db_name %>_development
+  primary:
+    <<: *default
+    database: <%= db_name %>_development
+  <%= db_name %>:
+    <<: *default
+    database: <%= db_name %>_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
